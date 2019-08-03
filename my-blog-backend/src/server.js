@@ -20,7 +20,7 @@ app.use(bodyParser.json());
 app.post('/api/articles/:name/upvote', (req, res) => {
   const articleName = req.params.name;
   articleInfo[articleName].upvotes += 1;
-  res.status(200).send(`${articleName} now has ${articleInfo[articleName].upvotes} upvotes`);
+  res.status(200).send(`${articleName} now has ${articleInfo[articleName].upvotes} upvotes!`);
 })
 
 app.listen(8000, () => console.log('Listening on port 8000'));
