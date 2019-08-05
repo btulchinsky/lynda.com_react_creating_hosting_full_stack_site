@@ -15,8 +15,17 @@ const ArticlePage = ({ match }) => {
 
   const [articleInfo, setArticleInfo] = useState({ upvotes: 0, comments: [] });
   useEffect(() => {
-    setArticleInfo({ upvotes: 3});
-  });
+    const fetchData = async () => {
+      // const result = await fetch(`http://localhost:8000/api/articles/${name}`, {});
+      const result = await fetch(`/api/articles/${name}`, {}); // Note: Proxy set in package.json
+      const body = await result.json();
+      // console.log(`body=${JSON.stringify(body)}`);
+      console.log(body);
+      setArticleInfo(body);
+    }
+    fetchData();
+    
+  }, [name]);
 
   if (!article) return <NotFoundPage />
 
